@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>type=number,去除样式及现在输入长度</title>
+    <title>函数</title>
+    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
+      <categories>
+        <category>JavaScript高级程序设计</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
     <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
     <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
 
@@ -25,7 +36,7 @@
 <h6 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h6><ol>
 <li>添加全局样式，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 右侧箭头样式问题 </li>
 <li><code>oninput=&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</code> 自定义事件，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 的输入长度限制</li>
-<li><code>onKeypress=&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</code> 正则判断，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 是可以输入 <code>e</code> 的 bug</li>
+<li><code>onKeypress=&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</code> 正则判断，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code>是可以输入e的bug</li>
 </ol>
 ]]></content>
       <categories>
@@ -49,17 +60,6 @@
       </categories>
       <tags>
         <tag>工作中的小bug...</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数</title>
-    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
-      <categories>
-        <category>JavaScript高级程序设计</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>
