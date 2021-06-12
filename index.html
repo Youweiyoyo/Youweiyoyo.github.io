@@ -194,6 +194,135 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/12/%E7%BC%93%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/blog.jpg">
+      <meta itemprop="name" content="You wei">
+      <meta itemprop="description" content="这个少年，要努力变强">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Youwei Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/12/%E7%BC%93%E5%AD%98/" class="post-title-link" itemprop="url">HTTP--强缓存与协商缓存</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-12 09:34:10 / 修改时间：11:59:11" itemprop="dateCreated datePublished" datetime="2021-06-12T09:34:10+08:00">2021-06-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p><code>HTTP</code> 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为<strong>强缓存</strong>与<strong>协商缓存</strong>，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。</p>
+<blockquote>
+<p>注意：缓存一般是对页面中不太经常改变的静态资源进行缓存，很少对动态资源进行缓存</p>
+</blockquote>
+<ul>
+<li>通俗理解<ol>
+<li>强缓存时：不用判断缓存是否过期，可以直接使用缓存内容。</li>
+<li>协商缓存时：在每次获取缓存资源时，都要问服务器，资源有没有更新，有更新时使用最新资源，如果没有更新，再使用缓存中的内容。</li>
+</ol>
+</li>
+</ul>
+<h5 id="一、强缓存"><a href="#一、强缓存" class="headerlink" title="一、强缓存"></a>一、强缓存</h5><p>对于强缓存而言，客户端请求服务器，拿到数据资源，客户端进行强缓存，下一次再次请求时，如果缓存没有过期，则直接使用缓存中的内容，而不用再次发起请求。</p>
+<p>其中与强制缓存相关的两个字段是<code>expires</code>和<code>cache-control</code>，<code>expires</code>是在<code>HTTP1.0</code>协议中声明的，用来控制缓存失效日期时间戳的字段，它由服务器端指定后通过响应头告知浏览器，浏览器在接收到带有该字段的响应体后进行缓存，若之后浏览器再次发起相同的资源请求，便会对比<code>expires</code>与本地当前的时间戳，如果当前请求的本地时间戳小于<code>expires</code>的值，则说明浏览器缓存的响应还未过期，可以直接使用而无需向服务器端再次发起请求。只有当本地时间戳大于<code>expires</code>值发生缓存过期时，才允许重新向服务器发起请求。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里设置的是绝对时间</span></span><br><span class="line"><span class="attr">Expires</span>:<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2020-10-01 12:xx:xx&#x27;</span>).toUTCString() </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>缺点：由于该缓存策略是<code>HTTP1.0</code>的缓存策略，找个方式存在一个很大的漏洞，即<strong>对本地本地时间戳过分依赖</strong>，如果客户端本地的时间与服务端的时间不同步，或者对客户端时间进行主动修改，那么对于缓存过期的判断可能就无法和预期相符。</li>
+</ul>
+<p>为了解决<code>expires</code>判断的局限性，从<code>HTTP1.1</code>协议开始新增了 <code>cache-control</code>字段来对<code>expires</code>的功能进行扩展和完善。设置 <code>cache-control</code>属性来控制响应资源的有效期。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里设置的是滑动时间，它是一个以秒为单位的长度，表示该资源在被请求到后的10秒内有效</span></span><br><span class="line"><span class="string">&#x27;cache-control&#x27;</span>:<span class="string">&#x27;max-age = 10&#x27;</span>  </span><br></pre></td></tr></table></figure>
+
+<p>如此便可避免服务端和客户端时间戳不同步而造成的问题，除此之外， <code>cache-control</code>还支持配置一些其他属性值来更准确地控制缓存，下面具体介绍一下：</p>
+<h6 id="cache-control参数介绍"><a href="#cache-control参数介绍" class="headerlink" title="cache-control参数介绍"></a><code>cache-control</code>参数介绍</h6><ol>
+<li><code>no-cache</code><ul>
+<li>设置<code>no-cache</code>并非像字面上的意思不使用缓存，它表示为强缓存进行协商缓存，即对于每次发起的请求都不会再去判断强制缓存是否过期，而是直接与服务器协商来验证缓存的有效性，若缓存没有过期，则会使用本地缓存，也就是说，在请求之前，先请求到服务器，问一下服务器，这个资源有效吗？当服务器判断为有效，客户端去使用缓存中的内容，如果服务器发现内容已经更新了，服务器可以发送给客户端新的内容，客户端拿到内容后就可以直接去用。</li>
+</ul>
+</li>
+<li><code>no-store</code> <ul>
+<li>设置<code>no-store</code>则表示禁止使用任何缓存策略，客户端的每次请求都需要服务端给予全新的响应，原本有缓存，添加该参数后，缓存就被强制的清除掉了。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><code>no-cache</code>和<code>no-store</code> 是两个互斥的属性值，不同同时设置</p>
+</blockquote>
+<ol start="3">
+<li><p><code>public</code></p>
+<ul>
+<li>如果资源响应头中的<code>cache-control</code>字段设置了<code>public</code>属性值，则表示响应资源既可以被浏览器缓存，又可以被代理服务器缓存。</li>
+</ul>
+</li>
+<li><p><code>private</code></p>
+<ul>
+<li>如果资源响应头中的<code>cache-control</code>字段设置了<code>private</code>属性值，则限制了响应资源只能被浏览器缓存，私有缓存</li>
+</ul>
+<p><strong>注意</strong>：若未显式指定，则默认值为<code>private</code></p>
+</li>
+</ol>
+<blockquote>
+<p><code>private</code>和<code>public</code>也是<code>cache-control</code>的一组互斥属性值，他们用以明确响应资源是否可被代理服务器进行缓存</p>
+</blockquote>
+<ol start="5">
+<li><code>max-age</code><ul>
+<li>如果资源响应头中的<code>cache-control</code>字段设置了<code>max-age</code>属性值，表示该资源在被请求到后的x秒内有效。</li>
+</ul>
+</li>
+<li><code>s-maxage</code><ul>
+<li>如果项目中使用了代理，资源响应头中的<code>cache-control</code>字段可以设置<code>s-maxage</code>属性值，用来设置代理服务器上的资源在x秒内有效，该属性仅当设置了<code>public</code>属性值时才有效。</li>
+</ul>
+</li>
+</ol>
+<p>由此可见<code>cache-control</code>可以作为<code>expires</code>的完全替代方案，并且拥有<code>expires</code>所不具备的一些缓存控制特性，在项目中建议使用<code>cache-control</code>，<code>expires</code>在向下兼容的一些项目中可以使用</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -487,20 +616,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
