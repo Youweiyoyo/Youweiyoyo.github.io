@@ -17,6 +17,17 @@
       </tags>
   </entry>
   <entry>
+    <title>函数</title>
+    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
+      <categories>
+        <category>JavaScript高级程序设计</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
     <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
     <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
@@ -52,17 +63,6 @@
       </tags>
   </entry>
   <entry>
-    <title>函数</title>
-    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
-      <categories>
-        <category>JavaScript高级程序设计</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTP--强缓存与协商缓存</title>
     <url>/2021/06/12/%E7%BC%93%E5%AD%98/</url>
     <content><![CDATA[<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p><code>HTTP</code> 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为<strong>强缓存</strong>与<strong>协商缓存</strong>，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。</p>
@@ -76,6 +76,8 @@
 </ol>
 </li>
 </ul>
+<span id="more"></span>
+
 <h5 id="一、强缓存"><a href="#一、强缓存" class="headerlink" title="一、强缓存"></a>一、强缓存</h5><p>对于强缓存而言，客户端请求服务器，拿到数据资源，客户端进行强缓存，下一次再次请求时，如果缓存没有过期，则直接使用缓存中的内容，而不用再次发起请求。</p>
 <p>其中与强制缓存相关的两个字段是<code>expires</code>和<code>cache-control</code>，<code>expires</code>是在<code>HTTP1.0</code>协议中声明的，用来控制缓存失效日期时间戳的字段，它由服务器端指定后通过响应头告知浏览器，浏览器在接收到带有该字段的响应体后进行缓存，若之后浏览器再次发起相同的资源请求，便会对比<code>expires</code>与本地当前的时间戳，如果当前请求的本地时间戳小于<code>expires</code>的值，则说明浏览器缓存的响应还未过期，可以直接使用而无需向服务器端再次发起请求。只有当本地时间戳大于<code>expires</code>值发生缓存过期时，才允许重新向服务器发起请求。 </p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这里设置的是绝对时间</span></span><br><span class="line"><span class="attr">Expires</span>:<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2020-10-01 12:xx:xx&#x27;</span>).toUTCString() </span><br></pre></td></tr></table></figure>
