@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="缓存​        HTTP 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为强缓存与协商缓存，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。 ​        所谓浏览器缓存其实就是指在本地使用计算机中开辟一个内存区，同时也开辟一个硬盘区作为数据传输的缓冲区，然后用制个缓冲区来暂时保存用户以前访问过的信息">
+  <meta name="description" content="浏览器缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP--强缓存与协商缓存">
 <meta property="og:url" content="http://example.com/2021/06/12/HTTP--%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="Youwei Blog">
-<meta property="og:description" content="缓存​        HTTP 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为强缓存与协商缓存，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。 ​        所谓浏览器缓存其实就是指在本地使用计算机中开辟一个内存区，同时也开辟一个硬盘区作为数据传输的缓冲区，然后用制个缓冲区来暂时保存用户以前访问过的信息">
+<meta property="og:description" content="浏览器缓存">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/06/12/HTTP--%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/hc.jpg">
 <meta property="article:published_time" content="2021-06-12T01:34:10.000Z">
-<meta property="article:modified_time" content="2021-06-18T10:24:57.395Z">
+<meta property="article:modified_time" content="2021-06-18T15:17:54.565Z">
 <meta property="article:author" content="You wei">
 <meta property="article:tag" content="HTTP缓存">
 <meta name="twitter:card" content="summary">
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-18 18:24:57" itemprop="dateModified" datetime="2021-06-18T18:24:57+08:00">2021-06-18</time>
+                <time title="修改时间：2021-06-18 23:17:54" itemprop="dateModified" datetime="2021-06-18T23:17:54+08:00">2021-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>​        <code>HTTP</code> 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为<strong>强缓存</strong>与<strong>协商缓存</strong>，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。</p>
+        <h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><span id="more"></span>
+
+<p>​        <code>HTTP</code> 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为<strong>强缓存</strong>与<strong>协商缓存</strong>，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。</p>
 <p>​        所谓浏览器缓存其实就是指在本地使用计算机中开辟一个内存区，同时也开辟一个硬盘区作为数据传输的缓冲区，然后用制个缓冲区来暂时保存用户以前访问过的信息。</p>
 <blockquote>
 <p>注意：缓存一般是对页面中不太经常改变的静态资源进行缓存，很少对动态资源进行缓存</p>
@@ -265,8 +267,6 @@
 </ol>
 </li>
 </ul>
-<span id="more"></span>
-
 <h5 id="一、强缓存"><a href="#一、强缓存" class="headerlink" title="一、强缓存"></a>一、强缓存</h5><p>​        对于强缓存而言，客户端请求服务器，拿到数据资源，客户端进行强缓存，下一次再次请求时，如果缓存没有过期，则直接使用缓存中的内容，而不用再次发起请求，但是会返回200的状态码。</p>
 <p>​        其中与强制缓存相关的两个字段是<code>expires</code>和<code>cache-control</code>，<code>expires</code>是在<code>HTTP1.0</code>协议中声明的，用来控制缓存失效日期时间戳的字段，它由服务器端指定后通过响应头告知浏览器，浏览器在接收到带有该字段的响应体后进行缓存，若之后浏览器再次发起相同的资源请求，便会对比<code>expires</code>与本地当前的时间戳，如果当前请求的本地时间戳小于<code>expires</code>的值，则说明浏览器缓存的响应还未过期，可以直接使用而无需向服务器端再次发起请求。只有当本地时间戳大于<code>expires</code>值发生缓存过期时，才允许重新向服务器发起请求。 </p>
 <h6 id="如何设置强缓存"><a href="#如何设置强缓存" class="headerlink" title="如何设置强缓存"></a>如何设置强缓存</h6><p>​        我们第一次进入页面，请求服务器，然后服务器进行应答，浏览器会根据<code>response Header</code>来判断是否对资源进行缓存，如果响应头中<code>expires、pragma</code>或者<code>cache-control</code>字段，代表这是强缓存，浏览器就会把资源缓存在<code>memory cache</code> 或 <code>disk cache</code>中。</p>
@@ -369,7 +369,10 @@
     <a href="/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/" rel="prev" title="使用el-input,type="number"时去除箭头样式及控制输入文本长度">
       <i class="fa fa-chevron-left"></i> 使用el-input,type="number"时去除箭头样式及控制输入文本长度
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/" rel="next" title="Vue中重置data">
+      Vue中重置data <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -428,7 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">1.1.</span> <span class="nav-text">一、强缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">如何设置强缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#cache-control%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.2.</span> <span class="nav-text">cache-control参数介绍</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、协商缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B7%E6%96%B0%E5%AF%B9%E4%BA%8E%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">1.3.</span> <span class="nav-text">三、刷新对于强缓存与协商缓存的影响</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9F%BA%E4%BA%8E-ETag-%E7%9A%84%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">1.4.</span> <span class="nav-text">四、基于 ETag 的协商缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%BC%93%E5%AD%98%E5%86%B3%E7%AD%96%E6%A0%91"><span class="nav-number">1.5.</span> <span class="nav-text">四、缓存决策树</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">1.1.</span> <span class="nav-text">一、强缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">如何设置强缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#cache-control%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.2.</span> <span class="nav-text">cache-control参数介绍</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、协商缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B7%E6%96%B0%E5%AF%B9%E4%BA%8E%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">1.3.</span> <span class="nav-text">三、刷新对于强缓存与协商缓存的影响</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9F%BA%E4%BA%8E-ETag-%E7%9A%84%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">1.4.</span> <span class="nav-text">四、基于 ETag 的协商缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%BC%93%E5%AD%98%E5%86%B3%E7%AD%96%E6%A0%91"><span class="nav-number">1.5.</span> <span class="nav-text">四、缓存决策树</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -444,20 +447,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

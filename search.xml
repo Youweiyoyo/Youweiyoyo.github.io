@@ -3,7 +3,9 @@
   <entry>
     <title>HTTP--强缓存与协商缓存</title>
     <url>/2021/06/12/HTTP--%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/</url>
-    <content><![CDATA[<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>​        <code>HTTP</code> 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为<strong>强缓存</strong>与<strong>协商缓存</strong>，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。</p>
+    <content><![CDATA[<h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><span id="more"></span>
+
+<p>​        <code>HTTP</code> 缓存应该是前端开发中最常接触的缓存机制之一，它又可细分为<strong>强缓存</strong>与<strong>协商缓存</strong>，二者最大的区别在于判断缓存命中时，浏览器是否需要向服务器端进行询问以协商缓存的相关信息，进而判断是否需要就响应内容进行重新请求。</p>
 <p>​        所谓浏览器缓存其实就是指在本地使用计算机中开辟一个内存区，同时也开辟一个硬盘区作为数据传输的缓冲区，然后用制个缓冲区来暂时保存用户以前访问过的信息。</p>
 <blockquote>
 <p>注意：缓存一般是对页面中不太经常改变的静态资源进行缓存，很少对动态资源进行缓存</p>
@@ -15,8 +17,6 @@
 </ol>
 </li>
 </ul>
-<span id="more"></span>
-
 <h5 id="一、强缓存"><a href="#一、强缓存" class="headerlink" title="一、强缓存"></a>一、强缓存</h5><p>​        对于强缓存而言，客户端请求服务器，拿到数据资源，客户端进行强缓存，下一次再次请求时，如果缓存没有过期，则直接使用缓存中的内容，而不用再次发起请求，但是会返回200的状态码。</p>
 <p>​        其中与强制缓存相关的两个字段是<code>expires</code>和<code>cache-control</code>，<code>expires</code>是在<code>HTTP1.0</code>协议中声明的，用来控制缓存失效日期时间戳的字段，它由服务器端指定后通过响应头告知浏览器，浏览器在接收到带有该字段的响应体后进行缓存，若之后浏览器再次发起相同的资源请求，便会对比<code>expires</code>与本地当前的时间戳，如果当前请求的本地时间戳小于<code>expires</code>的值，则说明浏览器缓存的响应还未过期，可以直接使用而无需向服务器端再次发起请求。只有当本地时间戳大于<code>expires</code>值发生缓存过期时，才允许重新向服务器发起请求。 </p>
 <h6 id="如何设置强缓存"><a href="#如何设置强缓存" class="headerlink" title="如何设置强缓存"></a>如何设置强缓存</h6><p>​        我们第一次进入页面，请求服务器，然后服务器进行应答，浏览器会根据<code>response Header</code>来判断是否对资源进行缓存，如果响应头中<code>expires、pragma</code>或者<code>cache-control</code>字段，代表这是强缓存，浏览器就会把资源缓存在<code>memory cache</code> 或 <code>disk cache</code>中。</p>
@@ -123,6 +123,69 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue中重置data</title>
+    <url>/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/</url>
+    <content><![CDATA[<h5 id="Vue-中重置-data"><a href="#Vue-中重置-data" class="headerlink" title="Vue 中重置 data"></a><code>Vue</code> 中重置 <code>data</code></h5><span id="more"></span>
+
+<p>​        在 <code>Vue</code> 项目中，有时我们需要将组件 <code>data</code> 中的数据重置为初始状态，比如，我们需要填入表单数据，或者一个富文本编辑器，当我们编辑，提交后，需要将数据重置为初始状态</p>
+<ol>
+<li><p>手动给数据对象赋值为空</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">A</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="attr">content</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最直接的办法,适用于少量数据</span></span><br><span class="line"><span class="built_in">this</span>.A.title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">this</span>.A.content = <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>上面的方法只是适用于重置少量的数据，但当我们需要重置的数据很多的时候，比如重置整个 <code>data</code> 中的所有数据，这种方法就有些力不从心了。</p>
+<ol start="2">
+<li>使用 <code>Object.assign()</code> 方法</li>
+</ol>
+<p>在使用之前让我们先来看看 <code>MDN</code> 上对该属性的解释</p>
+<blockquote>
+<p>​    <code>Object.assign(target,...sources)</code> 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
+<p>第一个参数是目标对象，第二个参数是源对象，就是将源对象属性复制到目标对象，返回目标对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> objClone = <span class="built_in">Object</span>.assign(&#123;&#125;, obj)</span><br><span class="line"><span class="built_in">console</span>.log(objClone, <span class="string">&#x27;objClone&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/objClone.png" class title="objClone">
+
+<p>在得知 <code>Object.assign()</code> 方法如何使用之后，那么我们在来看看如何在 <code>Vue</code> 中获取组件的 <code>data</code> 数据</p>
+<ol>
+<li><code>this.$data</code> 属性，可以拿到组件<strong>当前</strong>的 <code>data</code> 数据</li>
+<li><code>this.$options.data</code> 属性可以拿到当前组件<strong>初始化</strong>时的 <code>data</code> 数据 </li>
+</ol>
+<p>现在我们有一组 <code>data</code> 数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/carbon.png" class title="carbon">
+
+<p>通过 <code>this.$data</code> 拿到的数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/1.png" class title="this.$data拿到的数据">
+
+<p>通过 <code>this.$options.data</code> 拿到的数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/2.png" class title="this.$options.data()拿到的数据">
+
+<p>如此一来，我们也能拿到 <code>vue</code> 组件中的 <code>data</code> 数据了，接下来调用 <code>Object.assign()</code> 就可以重置数据了</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用Object.assign()方法重置data数据</span></span><br><span class="line"><span class="built_in">Object</span>.assign(<span class="built_in">this</span>.$data,<span class="built_in">this</span>.$options.data())</span><br><span class="line"><span class="comment">// 第一个参数为组件当前的data数据，第二个数据为组件初始化时的数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue基础篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数</title>
+    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
+      <categories>
+        <category>JavaScript高级程序设计</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
     <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
     <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
@@ -155,17 +218,6 @@
       </categories>
       <tags>
         <tag>工作中的小bug...</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数</title>
-    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
-      <categories>
-        <category>JavaScript高级程序设计</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>
