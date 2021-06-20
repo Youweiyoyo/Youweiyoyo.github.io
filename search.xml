@@ -175,17 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>函数</title>
-    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>]]></content>
-      <categories>
-        <category>JavaScript高级程序设计</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
     <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
     <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
@@ -218,6 +207,37 @@
       </categories>
       <tags>
         <tag>工作中的小bug...</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数</title>
+    <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
+<p>函数实际上是对象，每个函数都是 <code>Funciton</code> 类型的实例，而 <code>Function</code> 也有属性和方法，跟其他引用类型一样。因为函数是对象，所以函数名就是指向函数对象的指针，而且不一定与函数本身紧密绑定。</p>
+</blockquote>
+<ol>
+<li><p>定义函数的几种方式</p>
+<ol>
+<li><p>命名函数（函数声明）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>匿名函数（函数表达式）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = <span class="function"><span class="title">funciton</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>箭头函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">num1,num2</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>Fouction</code> 构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这个构造函数接收任意多个字符串参数，最后一个参数始终会被当成函数体，而之前的参数都是新函数的参数</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="keyword">new</span> Funciton(<span class="string">&#x27;num1&#x27;</span>,<span class="string">&#x27;num2&#x27;</span>,<span class="string">&#x27;return num1 + num2&#x27;</span>); <span class="comment">// 不推荐使用</span></span><br></pre></td></tr></table></figure>
+
+<p>不推荐使用这种语法定义函数，因为这段代码会被解释两次：第一次是将它当作常规 <code>ECMAscript</code> 代码，第二次是解释传递给构造函数的字符串。这样会影响性能</p>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript高级程序设计</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>

@@ -537,7 +537,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-05 22:07:03" itemprop="dateModified" datetime="2021-06-05T22:07:03+08:00">2021-06-05</time>
+                <time title="修改时间：2021-06-20 10:33:32" itemprop="dateModified" datetime="2021-06-20T10:33:32+08:00">2021-06-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -560,7 +560,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>
+          <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><blockquote>
+<p>函数实际上是对象，每个函数都是 <code>Funciton</code> 类型的实例，而 <code>Function</code> 也有属性和方法，跟其他引用类型一样。因为函数是对象，所以函数名就是指向函数对象的指针，而且不一定与函数本身紧密绑定。</p>
+</blockquote>
+<ol>
+<li><p>定义函数的几种方式</p>
+<ol>
+<li><p>命名函数（函数声明）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>匿名函数（函数表达式）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = <span class="function"><span class="title">funciton</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>箭头函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">num1,num2</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>Fouction</code> 构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个构造函数接收任意多个字符串参数，最后一个参数始终会被当成函数体，而之前的参数都是新函数的参数</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="keyword">new</span> Funciton(<span class="string">&#x27;num1&#x27;</span>,<span class="string">&#x27;num2&#x27;</span>,<span class="string">&#x27;return num1 + num2&#x27;</span>); <span class="comment">// 不推荐使用</span></span><br></pre></td></tr></table></figure>
+
+<p>不推荐使用这种语法定义函数，因为这段代码会被解释两次：第一次是将它当作常规 <code>ECMAscript</code> 代码，第二次是解释传递给构造函数的字符串。这样会影响性能</p>
+</li>
+</ol>
+</li>
+</ol>
+
       
     </div>
 
