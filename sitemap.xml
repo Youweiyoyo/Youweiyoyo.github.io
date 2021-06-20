@@ -60,13 +60,6 @@
 
   
   <url>
-    <loc>http://example.com/tags/HTTP%E7%BC%93%E5%AD%98/</loc>
-    <lastmod>2021-06-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%B0%8Fbug/</loc>
     <lastmod>2021-06-20</lastmod>
     <changefreq>daily</changefreq>
@@ -74,7 +67,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Vue%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
+    <loc>http://example.com/tags/HTTP%E7%BC%93%E5%AD%98/</loc>
     <lastmod>2021-06-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -87,14 +80,14 @@
     <priority>0.6</priority>
   </url>
   
-
-  
   <url>
-    <loc>http://example.com/categories/HTTP/</loc>
+    <loc>http://example.com/tags/Vue%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
     <lastmod>2021-06-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
+  
+
   
   <url>
     <loc>http://example.com/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%82%A3%E7%82%B9%E4%BA%8B/</loc>
@@ -104,7 +97,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/Vue/</loc>
+    <loc>http://example.com/categories/HTTP/</loc>
     <lastmod>2021-06-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -112,6 +105,13 @@
   
   <url>
     <loc>http://example.com/categories/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2021-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/Vue/</loc>
     <lastmod>2021-06-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
