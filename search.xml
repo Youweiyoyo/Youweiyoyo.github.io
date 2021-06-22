@@ -107,58 +107,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue中重置data</title>
-    <url>/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/</url>
-    <content><![CDATA[<h5 id="Vue-中重置-data"><a href="#Vue-中重置-data" class="headerlink" title="Vue 中重置 data"></a><code>Vue</code> 中重置 <code>data</code></h5><span id="more"></span>
-
-<p>​        在 <code>Vue</code> 项目中，有时我们需要将组件 <code>data</code> 中的数据重置为初始状态，比如，我们需要填入表单数据，或者一个富文本编辑器，当我们编辑，提交后，需要将数据重置为初始状态</p>
-<ol>
-<li><p>手动给数据对象赋值为空</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">A</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="attr">content</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最直接的办法,适用于少量数据</span></span><br><span class="line"><span class="built_in">this</span>.A.title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">this</span>.A.content = <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>上面的方法只是适用于重置少量的数据，但当我们需要重置的数据很多的时候，比如重置整个 <code>data</code> 中的所有数据，这种方法就有些力不从心了。</p>
-<ol start="2">
-<li>使用 <code>Object.assign()</code> 方法</li>
-</ol>
-<p>在使用之前让我们先来看看 <code>MDN</code> 上对该属性的解释</p>
-<blockquote>
-<p>​    <code>Object.assign(target,...sources)</code> 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
-<p>第一个参数是目标对象，第二个参数是源对象，就是将源对象属性复制到目标对象，返回目标对象</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> objClone = <span class="built_in">Object</span>.assign(&#123;&#125;, obj)</span><br><span class="line"><span class="built_in">console</span>.log(objClone, <span class="string">&#x27;objClone&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/objClone.png" class title="objClone">
-
-<p>在得知 <code>Object.assign()</code> 方法如何使用之后，那么我们在来看看如何在 <code>Vue</code> 中获取组件的 <code>data</code> 数据</p>
-<ol>
-<li><code>this.$data</code> 属性，可以拿到组件<strong>当前</strong>的 <code>data</code> 数据</li>
-<li><code>this.$options.data</code> 属性可以拿到当前组件<strong>初始化</strong>时的 <code>data</code> 数据 </li>
-</ol>
-<p>现在我们有一组 <code>data</code> 数据</p>
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/carbon.png" class title="carbon">
-
-<p>通过 <code>this.$data</code> 拿到的数据</p>
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/1.png" class title="this.$data拿到的数据">
-
-<p>通过 <code>this.$options.data</code> 拿到的数据</p>
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/2.png" class title="this.$options.data()拿到的数据">
-
-<p>如此一来，我们也能拿到 <code>vue</code> 组件中的 <code>data</code> 数据了，接下来调用 <code>Object.assign()</code> 就可以重置数据了</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用Object.assign()方法重置data数据</span></span><br><span class="line"><span class="built_in">Object</span>.assign(<span class="built_in">this</span>.$data,<span class="built_in">this</span>.$options.data())</span><br><span class="line"><span class="comment">// 第一个参数为组件当前的data数据，第二个数据为组件初始化时的数据</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue基础篇</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JSON数据格式化后在前端页面展示</title>
     <url>/2021/06/06/JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E5%9C%A8%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA/</url>
     <content><![CDATA[<h5 id="将-JSON-数据格式化后展示在前端页面或文本域中"><a href="#将-JSON-数据格式化后展示在前端页面或文本域中" class="headerlink" title="将 JSON 数据格式化后展示在前端页面或文本域中"></a>将 <code>JSON</code> 数据格式化后展示在前端页面或文本域中</h5><span id="more"></span>
@@ -166,41 +114,6 @@
 <p>在做公司的一个需求，需要以 <code>json</code> 格式展示到文本域中，心里想着：这还不简单嘛，一个  <code>JSON.stringify()</code>   搞定完成。结果领导看了之后，让我将数据格式化一下，（参考在编辑器中的<code>json</code>格式）展示出来，一番百度之后，有了下面的代码….这里记录一下~</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> repeat (s, count) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(count + <span class="number">1</span>).join(s)</span><br><span class="line">    &#125;,</span><br><span class="line">    formatJson (json) &#123;</span><br><span class="line">      <span class="keyword">var</span> i = <span class="number">0</span>,</span><br><span class="line">        il = <span class="number">0</span>,</span><br><span class="line">        tab = <span class="string">&quot;    &quot;</span>,</span><br><span class="line">        newJson = <span class="string">&quot;&quot;</span>,</span><br><span class="line">        indentLevel = <span class="number">0</span>,</span><br><span class="line">        inString = <span class="literal">false</span>,</span><br><span class="line">        currentChar = <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>, il = json.length; i &lt; il; i += <span class="number">1</span>) &#123;</span><br><span class="line">        currentChar = json.charAt(i);</span><br><span class="line">        <span class="keyword">switch</span> (currentChar) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;&#123;&#x27;</span>:</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;[&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> (!inString) &#123;</span><br><span class="line">              newJson += currentChar + <span class="string">&quot;\n&quot;</span> + <span class="built_in">this</span>.repeat(tab, indentLevel + <span class="number">1</span>);</span><br><span class="line">              indentLevel += <span class="number">1</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              newJson += currentChar</span><br><span class="line">            &#125; <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;&#125;&#x27;</span>:</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;]&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> (!inString) &#123;</span><br><span class="line">              indentLevel -= <span class="number">1</span>;</span><br><span class="line">              newJson += <span class="string">&quot;\n&quot;</span> + <span class="built_in">this</span>.repeat(tab, indentLevel) + currentChar</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              newJson += currentChar</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;,&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> (!inString) &#123;</span><br><span class="line">              newJson += <span class="string">&quot;,\n&quot;</span> + <span class="built_in">this</span>.repeat(tab, indentLevel)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              newJson += currentChar</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;:&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> (!inString) &#123;</span><br><span class="line">              newJson += <span class="string">&quot;: &quot;</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              newJson += currentChar</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27; &#x27;</span>:</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&quot;\n&quot;</span>:</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&quot;\t&quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> (inString) &#123;</span><br><span class="line">              newJson += currentChar</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">&#x27;&quot;&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; json.charAt(i - <span class="number">1</span>) !== <span class="string">&#x27;\\&#x27;</span>) &#123;</span><br><span class="line">              inString = !inString</span><br><span class="line">            &#125;</span><br><span class="line">            newJson += currentChar;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            newJson += currentChar;</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> newJson</span><br><span class="line">    &#125;,</span><br><span class="line">    getFormatData (json) &#123;</span><br><span class="line">      <span class="keyword">var</span> json = json + <span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">if</span> (json.indexOf(<span class="string">&#x27;&#123;&#x27;</span>) == -<span class="number">1</span> &amp;&amp; json.indexOf(<span class="string">&#x27;[&#x27;</span>) == -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> json;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">this</span>.formatJson(json));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 在 Vue 项目中使用只需要this.getFormatData(json)即可</span></span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>工作中那点事...</category>
-      </categories>
-      <tags>
-        <tag>工作中的小bug...</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
-    <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
-    <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
-
-<h6 id="一、清除样式"><a href="#一、清除样式" class="headerlink" title="一、清除样式"></a>一、清除样式</h6><p>在使用 <code>el-input</code> 时，想让文本框只能输入数字，可以设置 <code>type=&quot;number&quot;</code>，现在就只能输入纯数字文本了，但是，这样的文本框会有一个自带的上下箭头样式，比较难看。可以利用 css 将其去除。我所遇到的问题，将代码写在目标所再页面内的样式标签中并不能生效，于是乎，我将代码写在了 <code>App.vue</code> 的样式标签内（global css）。</p>
-<ul>
-<li>可以尝试<ol>
-<li>如果写在 目标所在的 <code>.vue</code> 文件中没有生效，可以尝试添加 <code>/deep/</code> 看看</li>
-<li>建议单独写一个全局的样式表文件，在 <code>main.js</code> 中引入</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 清除el-input type=&quot;number&quot;自带的上下箭头样式 */</span></span><br><span class="line"><span class="comment">/* 使用时只需要给需要type=&quot;number&quot;的文本框添加class=&quot;no-number&quot;即可 */</span></span><br><span class="line"><span class="selector-class">.no-number</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number input[type=<span class="string">&quot;number&quot;</span>]::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="二、限制文本长度"><a href="#二、限制文本长度" class="headerlink" title="二、限制文本长度"></a>二、限制文本长度</h6><p>1.接着说一下，当我们使用 <code>el-input</code> 时，默认是 <code>type=&quot;text&quot;</code> 的，这时候我们可以设置官方提供的 <code>maxLength</code> 或 <code>minLemgth</code> 来限制输入的文本长度，但是当 <code>type=&quot;number&quot;</code> 时，会发现 <code>max</code> 与 <code>min</code> 失效了，这是因为当我们 <code>type=number</code> 时你时输入不了文本的，这时，可以用一个自定义的事件 <code>oninput</code> 在事件里面获取输入的数字长度，来进行判断，如果大于规定的长度就利用 <code>slice()</code> 进行剪切操作，这样一来便可达到我们需要的效果。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">/* oninput自定义事件判断输入长度，截取需要的长度 */</span><br><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">oninput</span>=<span class="string">&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>2.如果你仔细观察，你会发现在 <code>type=&quot;number&quot;</code> 的文本框内，可以输入字母 e，这是为什么呢? 因为e在数学上代表的是无理数，是一个无限不循环的小数，所以在输入e的时候，输入框会把e当成一个数字看待，那怎么解决这个问题呢，直接看代码</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">onKeypress</span>=<span class="string">&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样一来便可解决可以输入 e 这个bug</p>
-<h6 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h6><ol>
-<li>添加全局样式，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 右侧箭头样式问题 </li>
-<li><code>oninput=&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</code> 自定义事件，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 的输入长度限制</li>
-<li><code>onKeypress=&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</code> 正则判断，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code>是可以输入e的bug</li>
-</ol>
 ]]></content>
       <categories>
         <category>工作中那点事...</category>
@@ -257,6 +170,17 @@
 </ol>
 <p>箭头函数虽然语法简洁，但也有很多场合不适用。箭头函数不能使用 <code>arguments</code> 、<code>super</code> 和 <code>new.target</code> ,也不能用作构造函数，此外箭头函数也没有 <code>prototype</code> 属性，且箭头函数自身没有 <code>this</code> 指向，它的 <code>this</code> 是执行上下文中的 <code>this</code></p>
 </li>
+<li><p>函数参数</p>
+<blockquote>
+<p><code>Javascript</code> 函数既不关心传入的参数个数，也不关心这些参数的数据类型。在定义函数时要接收两个参数，并不意味着调用时就传两个参数，你可以传一个，三个，甚至一个也不传，解释器也不会报错</p>
+</blockquote>
+<p>​    <code>Javascript</code> 函数的参数在内部表现为一个数组。函数被调用时总会接收一个数组，但函数并不关心数组中包含什么。如果数组为空，没有问题；如果数组的元素超出了要求，也没有问题。在使用 <code>function</code> 来定义函数参数时，在函数内部访问 <code>arguments</code> 对象，从中取得传进来的每个参数值</p>
+<p>​    <code>arguments</code> 对象是一个类数组(伪数组,它不是 <code>Array</code> 的实例),因此可以使用中括号语法访问其中的元素，</p>
+<p>要确定传入进来多少个参数可以访问 <code>arguments.length</code> 属性</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">arguments</span>[<span class="number">0</span>]  <span class="comment">// 访问第一个元素</span></span><br><span class="line"><span class="built_in">arguments</span>[<span class="number">1</span>] <span class="comment">// 访问第二个元素</span></span><br><span class="line"><span class="built_in">arguments</span>.length <span class="comment">// 访问传入参数的长度</span></span><br></pre></td></tr></table></figure>
+
+<p>​    <code>arguments</code> 对象的值始终会与对应的命名参数同步</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doAdd</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">1</span>] = <span class="number">10</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>] + num2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -264,6 +188,93 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue中重置data</title>
+    <url>/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/</url>
+    <content><![CDATA[<h5 id="Vue-中重置-data"><a href="#Vue-中重置-data" class="headerlink" title="Vue 中重置 data"></a><code>Vue</code> 中重置 <code>data</code></h5><span id="more"></span>
+
+<p>​        在 <code>Vue</code> 项目中，有时我们需要将组件 <code>data</code> 中的数据重置为初始状态，比如，我们需要填入表单数据，或者一个富文本编辑器，当我们编辑，提交后，需要将数据重置为初始状态</p>
+<ol>
+<li><p>手动给数据对象赋值为空</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">A</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="attr">content</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最直接的办法,适用于少量数据</span></span><br><span class="line"><span class="built_in">this</span>.A.title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">this</span>.A.content = <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>上面的方法只是适用于重置少量的数据，但当我们需要重置的数据很多的时候，比如重置整个 <code>data</code> 中的所有数据，这种方法就有些力不从心了。</p>
+<ol start="2">
+<li>使用 <code>Object.assign()</code> 方法</li>
+</ol>
+<p>在使用之前让我们先来看看 <code>MDN</code> 上对该属性的解释</p>
+<blockquote>
+<p>​    <code>Object.assign(target,...sources)</code> 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
+<p>第一个参数是目标对象，第二个参数是源对象，就是将源对象属性复制到目标对象，返回目标对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> objClone = <span class="built_in">Object</span>.assign(&#123;&#125;, obj)</span><br><span class="line"><span class="built_in">console</span>.log(objClone, <span class="string">&#x27;objClone&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/objClone.png" class title="objClone">
+
+<p>在得知 <code>Object.assign()</code> 方法如何使用之后，那么我们在来看看如何在 <code>Vue</code> 中获取组件的 <code>data</code> 数据</p>
+<ol>
+<li><code>this.$data</code> 属性，可以拿到组件<strong>当前</strong>的 <code>data</code> 数据</li>
+<li><code>this.$options.data</code> 属性可以拿到当前组件<strong>初始化</strong>时的 <code>data</code> 数据 </li>
+</ol>
+<p>现在我们有一组 <code>data</code> 数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/carbon.png" class title="carbon">
+
+<p>通过 <code>this.$data</code> 拿到的数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/1.png" class title="this.$data拿到的数据">
+
+<p>通过 <code>this.$options.data</code> 拿到的数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/2.png" class title="this.$options.data()拿到的数据">
+
+<p>如此一来，我们也能拿到 <code>vue</code> 组件中的 <code>data</code> 数据了，接下来调用 <code>Object.assign()</code> 就可以重置数据了</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用Object.assign()方法重置data数据</span></span><br><span class="line"><span class="built_in">Object</span>.assign(<span class="built_in">this</span>.$data,<span class="built_in">this</span>.$options.data())</span><br><span class="line"><span class="comment">// 第一个参数为组件当前的data数据，第二个数据为组件初始化时的数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue基础篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
+    <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
+    <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
+
+<h6 id="一、清除样式"><a href="#一、清除样式" class="headerlink" title="一、清除样式"></a>一、清除样式</h6><p>在使用 <code>el-input</code> 时，想让文本框只能输入数字，可以设置 <code>type=&quot;number&quot;</code>，现在就只能输入纯数字文本了，但是，这样的文本框会有一个自带的上下箭头样式，比较难看。可以利用 css 将其去除。我所遇到的问题，将代码写在目标所再页面内的样式标签中并不能生效，于是乎，我将代码写在了 <code>App.vue</code> 的样式标签内（global css）。</p>
+<ul>
+<li>可以尝试<ol>
+<li>如果写在 目标所在的 <code>.vue</code> 文件中没有生效，可以尝试添加 <code>/deep/</code> 看看</li>
+<li>建议单独写一个全局的样式表文件，在 <code>main.js</code> 中引入</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 清除el-input type=&quot;number&quot;自带的上下箭头样式 */</span></span><br><span class="line"><span class="comment">/* 使用时只需要给需要type=&quot;number&quot;的文本框添加class=&quot;no-number&quot;即可 */</span></span><br><span class="line"><span class="selector-class">.no-number</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number input[type=<span class="string">&quot;number&quot;</span>]::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="二、限制文本长度"><a href="#二、限制文本长度" class="headerlink" title="二、限制文本长度"></a>二、限制文本长度</h6><p>1.接着说一下，当我们使用 <code>el-input</code> 时，默认是 <code>type=&quot;text&quot;</code> 的，这时候我们可以设置官方提供的 <code>maxLength</code> 或 <code>minLemgth</code> 来限制输入的文本长度，但是当 <code>type=&quot;number&quot;</code> 时，会发现 <code>max</code> 与 <code>min</code> 失效了，这是因为当我们 <code>type=number</code> 时你时输入不了文本的，这时，可以用一个自定义的事件 <code>oninput</code> 在事件里面获取输入的数字长度，来进行判断，如果大于规定的长度就利用 <code>slice()</code> 进行剪切操作，这样一来便可达到我们需要的效果。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">/* oninput自定义事件判断输入长度，截取需要的长度 */</span><br><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">oninput</span>=<span class="string">&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.如果你仔细观察，你会发现在 <code>type=&quot;number&quot;</code> 的文本框内，可以输入字母 e，这是为什么呢? 因为e在数学上代表的是无理数，是一个无限不循环的小数，所以在输入e的时候，输入框会把e当成一个数字看待，那怎么解决这个问题呢，直接看代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">onKeypress</span>=<span class="string">&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样一来便可解决可以输入 e 这个bug</p>
+<h6 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h6><ol>
+<li>添加全局样式，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 右侧箭头样式问题 </li>
+<li><code>oninput=&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</code> 自定义事件，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 的输入长度限制</li>
+<li><code>onKeypress=&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</code> 正则判断，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code>是可以输入e的bug</li>
+</ol>
+]]></content>
+      <categories>
+        <category>工作中那点事...</category>
+      </categories>
+      <tags>
+        <tag>工作中的小bug...</tag>
       </tags>
   </entry>
 </search>
