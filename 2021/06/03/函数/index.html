@@ -30,7 +30,7 @@
 <meta property="og:description" content="函数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-02T23:43:33.000Z">
-<meta property="article:modified_time" content="2021-06-22T00:00:06.367Z">
+<meta property="article:modified_time" content="2021-06-23T07:08:11.551Z">
 <meta property="article:author" content="You wei">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-22 08:00:06" itemprop="dateModified" datetime="2021-06-22T08:00:06+08:00">2021-06-22</time>
+                <time title="修改时间：2021-06-23 15:08:11" itemprop="dateModified" datetime="2021-06-23T15:08:11+08:00">2021-06-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -296,8 +296,7 @@
 </ol>
 <p>箭头函数虽然语法简洁，但也有很多场合不适用。箭头函数不能使用 <code>arguments</code> 、<code>super</code> 和 <code>new.target</code> ,也不能用作构造函数，此外箭头函数也没有 <code>prototype</code> 属性，且箭头函数自身没有 <code>this</code> 指向，它的 <code>this</code> 是执行上下文中的 <code>this</code></p>
 </li>
-<li><p>函数参数</p>
-<blockquote>
+<li><h4 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h4><blockquote>
 <p><code>Javascript</code> 函数既不关心传入的参数个数，也不关心这些参数的数据类型。在定义函数时要接收两个参数，并不意味着调用时就传两个参数，你可以传一个，三个，甚至一个也不传，解释器也不会报错</p>
 </blockquote>
 <p>​    <code>Javascript</code> 函数的参数在内部表现为一个数组。函数被调用时总会接收一个数组，但函数并不关心数组中包含什么。如果数组为空，没有问题；如果数组的元素超出了要求，也没有问题。在使用 <code>function</code> 来定义函数参数时，在函数内部访问 <code>arguments</code> 对象，从中取得传进来的每个参数值</p>
@@ -306,7 +305,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">arguments</span>[<span class="number">0</span>]  <span class="comment">// 访问第一个元素</span></span><br><span class="line"><span class="built_in">arguments</span>[<span class="number">1</span>] <span class="comment">// 访问第二个元素</span></span><br><span class="line"><span class="built_in">arguments</span>.length <span class="comment">// 访问传入参数的长度</span></span><br></pre></td></tr></table></figure>
 
 <p>​    <code>arguments</code> 对象的值始终会与对应的命名参数同步</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doAdd</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">1</span>] = <span class="number">10</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>] + num2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doAdd</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">1</span>] = <span class="number">10</span>  <span class="comment">// 为arguments[1]重新赋值，num2也会被修改</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>] + num2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>上面栗子中为 <code>arguments[1]</code> 重新赋值，也是会修改num2的值，但这并不意味着他们都访问同一个内存地址，他们在内存中还是分开的，只不过还是会保持同步而已</li>
+<li>如果只传了一个参数，然后把 <code>arguments[1]</code> 设置为某个值，那么这个值并不会反应到第二个命名参数，这是因为 <code>arguments</code> 对象的长度是根据传入的参数个数，而非定义函数时给出的命名参数个数确定的</li>
+<li>对于命名参数而言，如果调用时没有传这个参数，那么它的值就是 <code>undefined</code> ，类似于定义了变量而没有初始化</li>
+<li>严格模式下：像上面栗子中给 <code>arguments</code> 赋值不会再影响num2的值，就算把 <code>arguments[1]</code> 的值设置为10，num2的值仍然是传入的值，其次，在函数中尝试重写 <code>arguments</code> 对象会导致语法错误</li>
+</ol>
+</li>
 </ol>
 
     </div>
@@ -388,7 +395,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">定义函数的几种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%90%8D"><span class="nav-number">1.2.</span> <span class="nav-text">函数名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">箭头函数</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">定义函数的几种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%90%8D"><span class="nav-number">1.2.</span> <span class="nav-text">函数名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">函数参数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
