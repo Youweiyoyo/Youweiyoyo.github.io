@@ -284,4 +284,27 @@
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>可选链操作符解决undefined错误</title>
+    <url>/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<h3 id="使用可选链操作符-解决一些-‘xxx’-of-undefined的错误"><a href="#使用可选链操作符-解决一些-‘xxx’-of-undefined的错误" class="headerlink" title="使用可选链操作符 ?. 解决一些 ‘xxx’ of undefined的错误"></a>使用可选链操作符 <code>?.</code> 解决一些 ‘xxx’ of undefined的错误</h3><span id="more"></span>
+
+<p>首先先来看一下我在工作中遇到的问题</p>
+<img src="/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/01.png" class title="莫名奇妙的错误">
+
+<p>这是一个工作中很常见的问题，意思是说 <code>id</code> 没有找到，报了错误中断了我们的程序，但当我在排查代码的时候，我传递的值并没有问题，并且传递的时候按照逻辑来说也没有问题，于是我将结果打印了一下</p>
+<img src="/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/03.png" class title="打印出来的结果">
+
+<p>如上图，我们可以看到传递进去的 <code>res.data[0]</code> 传递给了 <code>row</code> ，并且也在可以在函数中打印出来，可这是为什还会报错呢？因为我们传递的 <code>row</code> 中存在 <code>row.id</code> 是嵌套了一层，但是 <code>row.id</code> 没有二层 <code>row</code> 的嵌套属性，其最终的结果相当于就是 <code>undefined.id</code> ，如果按照平时的解决方式我们需要将每一层都判断一下才可以，那，有没有简洁的方式呢？查阅 MDN 手册我们发现了 可选链操作符，这是一个什么东东呢，来看一下。</p>
+<img src="/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/04.png" class title="可选链操作符% } [MDN可选链操作符](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Operators&#x2F;Optional_chaining) 这里贴一下连接 根据MDN的介绍，我们可以得知，当我们想要去访问自己也不知道的属性时，那么可以使用这个表达式，当我们访问的属性是 &#96;undefinde&#96; 时，这个表达式并不会报错，只是会返回 &#96;undefined&#96; ，而如果我们使用 &#96;xxx.xxx.xxx&#96; 时，如果属性不存在就会报错，影响我们后续的代码执行，这样一来我们的代码就可以改写一下 {% asset_img 05.png 解决">
+
+<p>问题解决啦，又学习了一个新的表达式语法。</p>
+]]></content>
+      <categories>
+        <category>工作中那点事...</category>
+      </categories>
+      <tags>
+        <tag>工作中的小bug...</tag>
+      </tags>
+  </entry>
 </search>
