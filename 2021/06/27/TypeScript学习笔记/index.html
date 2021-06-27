@@ -22,30 +22,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这个少年，要努力变强">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Youwei Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="1、TypeSCript 简介TypeScript 是 javaSCript 的超集，它对 JS 进行了扩展，往 JS 中引入了类型的概念，并添加了许多新的特性，对比 JS 而言，TS拥有静态类型，更加严格的语法、更强大的功能 2、基本类型 类型声明  类型声明是 TS 非常重要的一个特点  通过类型声明可以指定 TS 中变量(参数、形参)的数据类型  指定类型后，为变量赋值时，TS 编译器会制动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript学习笔记">
+<meta property="og:url" content="http://example.com/2021/06/27/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Youwei Blog">
-<meta property="og:description" content="这个少年，要努力变强">
+<meta property="og:description" content="1、TypeSCript 简介TypeScript 是 javaSCript 的超集，它对 JS 进行了扩展，往 JS 中引入了类型的概念，并添加了许多新的特性，对比 JS 而言，TS拥有静态类型，更加严格的语法、更强大的功能 2、基本类型 类型声明  类型声明是 TS 非常重要的一个特点  通过类型声明可以指定 TS 中变量(参数、形参)的数据类型  指定类型后，为变量赋值时，TS 编译器会制动">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-27T07:32:31.000Z">
+<meta property="article:modified_time" content="2021-06-27T12:18:14.686Z">
 <meta property="article:author" content="You wei">
+<meta property="article:tag" content="TypeScript数据类型">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/06/27/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Youwei Blog</title>
+  <title>TypeScript学习笔记 | Youwei Blog</title>
   
 
 
@@ -188,9 +191,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -206,10 +210,9 @@
       <meta itemprop="name" content="Youwei Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/27/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">TypeScript学习笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          TypeScript学习笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -242,7 +245,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="1、TypeSCript-简介"><a href="#1、TypeSCript-简介" class="headerlink" title="1、TypeSCript 简介"></a>1、<code>TypeSCript</code> 简介</h3><p><code>TypeScript</code> 是 <code>javaSCript</code> 的超集，它对 <code>JS</code> 进行了扩展，往 <code>JS</code> 中引入了类型的概念，并添加了许多新的特性，对比 <code>JS</code> 而言，<code>TS</code>拥有静态类型，更加严格的语法、更强大的功能</p>
+        <h3 id="1、TypeSCript-简介"><a href="#1、TypeSCript-简介" class="headerlink" title="1、TypeSCript 简介"></a>1、<code>TypeSCript</code> 简介</h3><p><code>TypeScript</code> 是 <code>javaSCript</code> 的超集，它对 <code>JS</code> 进行了扩展，往 <code>JS</code> 中引入了类型的概念，并添加了许多新的特性，对比 <code>JS</code> 而言，<code>TS</code>拥有静态类型，更加严格的语法、更强大的功能</p>
 <h3 id="2、基本类型"><a href="#2、基本类型" class="headerlink" title="2、基本类型"></a>2、基本类型</h3><ol>
 <li><p>类型声明</p>
 <ul>
@@ -310,489 +313,33 @@
 </li>
 </ol>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/TypeScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag"># TypeScript数据类型</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog.jpg">
-      <meta itemprop="name" content="You wei">
-      <meta itemprop="description" content="这个少年，要努力变强">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Youwei Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">可选链操作符解决undefined错误</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-06-24 21:50:24 / 修改时间：22:47:43" itemprop="dateCreated datePublished" datetime="2021-06-24T21:50:24+08:00">2021-06-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%82%A3%E7%82%B9%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">工作中那点事...</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="使用可选链操作符-解决一些-‘xxx’-of-undefined的错误"><a href="#使用可选链操作符-解决一些-‘xxx’-of-undefined的错误" class="headerlink" title="使用可选链操作符 ?. 解决一些 ‘xxx’ of undefined的错误"></a>使用可选链操作符 <code>?.</code> 解决一些 ‘xxx’ of undefined的错误</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog.jpg">
-      <meta itemprop="name" content="You wei">
-      <meta itemprop="description" content="这个少年，要努力变强">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Youwei Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/" class="post-title-link" itemprop="url">Vue中重置data</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-06-18 22:01:20 / 修改时间：23:15:21" itemprop="dateCreated datePublished" datetime="2021-06-18T22:01:20+08:00">2021-06-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="Vue-中重置-data"><a href="#Vue-中重置-data" class="headerlink" title="Vue 中重置 data"></a><code>Vue</code> 中重置 <code>data</code></h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/24/%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A7%A3%E5%86%B3undefined%E9%94%99%E8%AF%AF/" rel="prev" title="可选链操作符解决undefined错误">
+      <i class="fa fa-chevron-left"></i> 可选链操作符解决undefined错误
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/12/HTTP--%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog.jpg">
-      <meta itemprop="name" content="You wei">
-      <meta itemprop="description" content="这个少年，要努力变强">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Youwei Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/12/HTTP--%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" class="post-title-link" itemprop="url">HTTP--强缓存与协商缓存</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-12 09:34:10" itemprop="dateCreated datePublished" datetime="2021-06-12T09:34:10+08:00">2021-06-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-18 23:17:54" itemprop="dateModified" datetime="2021-06-18T23:17:54+08:00">2021-06-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/12/HTTP--%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog.jpg">
-      <meta itemprop="name" content="You wei">
-      <meta itemprop="description" content="这个少年，要努力变强">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Youwei Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/" class="post-title-link" itemprop="url">使用el-input,type="number"时去除箭头样式及控制输入文本长度</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-06-07 16:11:00 / 修改时间：17:13:59" itemprop="dateCreated datePublished" datetime="2021-06-07T16:11:00+08:00">2021-06-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%82%A3%E7%82%B9%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">工作中那点事...</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/06/JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E5%9C%A8%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog.jpg">
-      <meta itemprop="name" content="You wei">
-      <meta itemprop="description" content="这个少年，要努力变强">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Youwei Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/06/JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E5%9C%A8%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA/" class="post-title-link" itemprop="url">JSON数据格式化后在前端页面展示</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-06 21:07:29" itemprop="dateCreated datePublished" datetime="2021-06-06T21:07:29+08:00">2021-06-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-07 17:06:17" itemprop="dateModified" datetime="2021-06-07T17:06:17+08:00">2021-06-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%82%A3%E7%82%B9%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">工作中那点事...</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="将-JSON-数据格式化后展示在前端页面或文本域中"><a href="#将-JSON-数据格式化后展示在前端页面或文本域中" class="headerlink" title="将 JSON 数据格式化后展示在前端页面或文本域中"></a>将 <code>JSON</code> 数据格式化后展示在前端页面或文本域中</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/06/JSON%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E5%9C%A8%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/03/%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog.jpg">
-      <meta itemprop="name" content="You wei">
-      <meta itemprop="description" content="这个少年，要努力变强">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Youwei Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/03/%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-03 07:43:33" itemprop="dateCreated datePublished" datetime="2021-06-03T07:43:33+08:00">2021-06-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-23 15:08:11" itemprop="dateModified" datetime="2021-06-23T15:08:11+08:00">2021-06-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">JavaScript高级程序设计</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/03/%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -845,6 +392,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81TypeSCript-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1、TypeSCript 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">2、基本类型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
