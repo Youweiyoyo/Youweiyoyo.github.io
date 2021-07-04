@@ -217,10 +217,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-06-27 15:32:31 / 修改时间：20:18:14" itemprop="dateCreated datePublished" datetime="2021-06-27T15:32:31+08:00">2021-06-27</time>
+              <time title="创建时间：2021-06-27 15:32:31" itemprop="dateCreated datePublished" datetime="2021-06-27T15:32:31+08:00">2021-06-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-03 23:59:59" itemprop="dateModified" datetime="2021-07-03T23:59:59+08:00">2021-07-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -243,73 +249,14 @@
 
       
           <h3 id="1、TypeSCript-简介"><a href="#1、TypeSCript-简介" class="headerlink" title="1、TypeSCript 简介"></a>1、<code>TypeSCript</code> 简介</h3><p><code>TypeScript</code> 是 <code>javaSCript</code> 的超集，它对 <code>JS</code> 进行了扩展，往 <code>JS</code> 中引入了类型的概念，并添加了许多新的特性，对比 <code>JS</code> 而言，<code>TS</code>拥有静态类型，更加严格的语法、更强大的功能</p>
-<h3 id="2、基本类型"><a href="#2、基本类型" class="headerlink" title="2、基本类型"></a>2、基本类型</h3><ol>
-<li><p>类型声明</p>
-<ul>
-<li><p>类型声明是 <code>TS</code> 非常重要的一个特点</p>
-</li>
-<li><p>通过类型声明可以指定 <code>TS</code> 中变量(参数、形参)的数据类型</p>
-</li>
-<li><p>指定类型后，为变量赋值时，<code>TS</code> 编译器会制动检查值是否符合类型声明，符合则赋值，否则会在编辑器上出现波浪线提示错误</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="keyword">let</span> 变量: 类型 = 值;</span><br><span class="line">	<span class="keyword">let</span> sum: number = <span class="number">18</span></span><br><span class="line"><span class="number">2.</span><span class="keyword">let</span> 变量: 类型</span><br><span class="line">	<span class="keyword">let</span> str: string</span><br><span class="line">str = <span class="string">&#x27;zs&#x27;</span></span><br><span class="line"><span class="number">3.</span>函数语法,括号内的类型为参数类型，括号外的类型为返回值类型</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">参数:类型,参数:类型</span>):类型</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSum</span>(<span class="params">a: number, b: number</span>):<span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>类型</p>
-<ol>
-<li><p><code>Number</code> 类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sum: number = <span class="number">18</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>String</code> 类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str: string = <span class="string">&#x27;张三&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>Boolean</code> 类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bol: boolean = <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
-<li><p>字面量类型，直接使用字面量进行赋值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: <span class="number">10</span></span><br><span class="line">a = <span class="number">10</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>any</code> 类型，任意类型。设置类型为 <code>any</code> 后相当于关闭了 <code>Ts</code> 的类型检查功能</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显式的 any</span></span><br><span class="line"><span class="keyword">let</span> d: any</span><br><span class="line">	d = <span class="number">10</span></span><br><span class="line">	d = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">	d = <span class="literal">true</span></span><br><span class="line"><span class="comment">// 隐式的 any 当声明变量不赋值时,ts会为变量自动分配 any 类型</span></span><br><span class="line"><span class="keyword">let</span> d;</span><br><span class="line">	d = <span class="number">10</span></span><br><span class="line">	d = <span class="string">&#x27;zs&#x27;</span></span><br><span class="line">	d = <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>unknown</code> 类型，未知类型的值</p>
-<ul>
-<li><code>unknown</code> 实际上就是一个类型安全的 <code>any</code></li>
-<li><code>unknown</code> 类型的变量，不能直接赋值给其他变量</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> e: unknown;</span><br><span class="line">	e = <span class="number">10</span></span><br><span class="line">	e = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line">	e = <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>void</code> 类型，用来表示空值，以函数为例，表示没有返回值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>): <span class="title">void</span></span>&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><code>never</code> 类型，表示永远不会返回结果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>): <span class="title">never</span></span>&#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><code>object</code> 类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a: object</span><br><span class="line"><span class="comment">// 字面量</span></span><br><span class="line">	a = &#123;&#125;</span><br><span class="line"><span class="comment">// &#123;&#125; 用来指定对象中可以包含那些属性</span></span><br><span class="line"><span class="comment">// ?可选属性，该属性有也可以，没有也可以</span></span><br><span class="line"><span class="keyword">let</span> b:&#123;</span><br><span class="line">    <span class="attr">name</span>:strign,</span><br><span class="line">    age?:numher</span><br><span class="line">&#125;</span><br><span class="line">	b = &#123;<span class="attr">name</span>:<span class="string">&#x27;法外狂徒张三&#x27;</span>&#125;</span><br><span class="line"><span class="comment">// [proName:string]:any 表示任意类型的属性     </span></span><br><span class="line"><span class="comment">// 除必须的name属性之外，可以用[proName:string]:any来表示其他任意类型的属性 </span></span><br><span class="line"><span class="keyword">let</span> c:&#123;</span><br><span class="line">    <span class="attr">name</span>: string</span><br><span class="line">    [proName:string]:any</span><br><span class="line">&#125;</span><br><span class="line">    c = &#123;<span class="attr">name</span>:<span class="string">&#x27;李四&#x27;</span>,<span class="attr">age</span>: <span class="number">18</span>,<span class="attr">gender</span>: <span class="string">&#x27;男&#x27;</span>&#125;</span><br><span class="line"><span class="comment">// 函数结构声明语法</span></span><br><span class="line">    <span class="keyword">let</span> d:<span class="function">(<span class="params">a: number,b: number</span>) =&gt;</span> number</span><br></pre></td></tr></table></figure></li>
-<li><p><code>array</code> 类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明方式一:</span></span><br><span class="line"><span class="comment">// 用于表示字符串类型的数组</span></span><br><span class="line"><span class="keyword">let</span> a: string[];</span><br><span class="line">	a = [ <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span> ]</span><br><span class="line"><span class="comment">// 用于表达数值类型的数组</span></span><br><span class="line"><span class="keyword">let</span> b: number[];</span><br><span class="line">	b = [ <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span> ]</span><br><span class="line"><span class="comment">// 声明方式二:</span></span><br><span class="line"><span class="keyword">let</span> c: <span class="built_in">Array</span>&lt;string&gt;</span><br><span class="line">    c = [ <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span> ]</span><br><span class="line"><span class="keyword">let</span> b: <span class="built_in">Array</span>&lt;number&gt;;</span><br><span class="line">	b = [ <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span> ]</span><br></pre></td></tr></table></figure></li>
-<li><p><code>tuple</code> 元组，固定长度的数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a:[string,number];</span><br><span class="line">	a = [<span class="string">&#x27;张三&#x27;</span>, <span class="number">20</span>]</span><br></pre></td></tr></table></figure></li>
-<li><p><code>enum</code> 枚举</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明可枚举属性 Gender</span></span><br><span class="line">enum Gender&#123;</span><br><span class="line">    Male,</span><br><span class="line">    Female</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 声明对象规定类型时使用</span></span><br><span class="line"><span class="keyword">let</span> a:&#123;</span><br><span class="line">    <span class="attr">name</span>:string,</span><br><span class="line">    <span class="attr">gender</span>:Gender    </span><br><span class="line">&#125;</span><br><span class="line">a = &#123;<span class="attr">name</span>:<span class="string">&#x27;zs&#x27;</span>,<span class="attr">gender</span>:gender.Male&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>联合类型</p>
-<ol>
-<li><p><code>|</code> 链接多个类型，满足一个类型即可</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b: boolean | string</span><br><span class="line">	b = <span class="literal">true</span></span><br><span class="line">	b = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"><span class="keyword">let</span> c: <span class="string">&#x27;male&#x27;</span> | <span class="string">&#x27;female&#x27;</span></span><br><span class="line">	c = <span class="string">&#x27;male&#x27;</span></span><br><span class="line">	c = <span class="string">&#x27;female&#x27;</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>&amp;</code> 链接多个类型，必须同时满足</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// j对象必须同时存在字符串类型的name属性和数组型的age属性，否则Ts类型检查无法通过，红色波浪线警告</span></span><br><span class="line"><span class="keyword">let</span> j:&#123;<span class="attr">name</span>: string&#125; &amp; &#123;<span class="attr">age</span>: number&#125;</span><br><span class="line">	j = &#123; <span class="attr">name</span>:<span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>:<span class="number">20</span> &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>类型别名</p>
-<p>给类型起别名，简化类型的使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type myType = One | Two | Three</span><br><span class="line"><span class="keyword">let</span> a = myType</span><br><span class="line">	a = One <span class="comment">// 不报错</span></span><br><span class="line">	a = Two <span class="comment">// 不报错</span></span><br><span class="line">	a = Three <span class="comment">// 不报错</span></span><br><span class="line">	a = <span class="string">&#x27;zs&#x27;</span> <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure></li>
-<li><p>类型断言</p>
-<p>有些情况，变量的类型对于我们来说是很明确的，但是对于 <code>Ts</code> 编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言的两种形式：</p>
-<ol>
-<li><p>第一种 <code>as</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> e: unknown</span><br><span class="line">	e = <span class="string">&#x27;zs&#x27;</span></span><br><span class="line"><span class="keyword">let</span> s: string</span><br><span class="line">	s = e <span class="keyword">as</span> string</span><br></pre></td></tr></table></figure></li>
-<li><p>第二种 <code>&lt;string&gt;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> e: unknown</span><br><span class="line">	e = <span class="string">&#x27;zs&#x27;</span></span><br><span class="line"><span class="keyword">let</span> s: string</span><br><span class="line">	s = &lt;string&gt; e</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/27/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

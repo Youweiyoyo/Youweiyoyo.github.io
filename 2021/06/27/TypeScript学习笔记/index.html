@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1、TypeSCript 简介TypeScript 是 javaSCript 的超集，它对 JS 进行了扩展，往 JS 中引入了类型的概念，并添加了许多新的特性，对比 JS 而言，TS拥有静态类型，更加严格的语法、更强大的功能 2、基本类型 类型声明  类型声明是 TS 非常重要的一个特点  通过类型声明可以指定 TS 中变量(参数、形参)的数据类型  指定类型后，为变量赋值时，TS 编译器会制动">
+  <meta name="description" content="1、TypeSCript 简介TypeScript 是 javaSCript 的超集，它对 JS 进行了扩展，往 JS 中引入了类型的概念，并添加了许多新的特性，对比 JS 而言，TS拥有静态类型，更加严格的语法、更强大的功能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript学习笔记">
 <meta property="og:url" content="http://example.com/2021/06/27/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Youwei Blog">
-<meta property="og:description" content="1、TypeSCript 简介TypeScript 是 javaSCript 的超集，它对 JS 进行了扩展，往 JS 中引入了类型的概念，并添加了许多新的特性，对比 JS 而言，TS拥有静态类型，更加严格的语法、更强大的功能 2、基本类型 类型声明  类型声明是 TS 非常重要的一个特点  通过类型声明可以指定 TS 中变量(参数、形参)的数据类型  指定类型后，为变量赋值时，TS 编译器会制动">
+<meta property="og:description" content="1、TypeSCript 简介TypeScript 是 javaSCript 的超集，它对 JS 进行了扩展，往 JS 中引入了类型的概念，并添加了许多新的特性，对比 JS 而言，TS拥有静态类型，更加严格的语法、更强大的功能">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-27T07:32:31.000Z">
-<meta property="article:modified_time" content="2021-06-27T12:18:14.686Z">
+<meta property="article:modified_time" content="2021-07-03T15:59:59.820Z">
 <meta property="article:author" content="You wei">
 <meta property="article:tag" content="TypeScript数据类型">
 <meta name="twitter:card" content="summary">
@@ -220,10 +220,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-06-27 15:32:31 / 修改时间：20:18:14" itemprop="dateCreated datePublished" datetime="2021-06-27T15:32:31+08:00">2021-06-27</time>
+              <time title="创建时间：2021-06-27 15:32:31" itemprop="dateCreated datePublished" datetime="2021-06-27T15:32:31+08:00">2021-06-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-03 23:59:59" itemprop="dateModified" datetime="2021-07-03T23:59:59+08:00">2021-07-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -246,6 +252,8 @@
 
       
         <h3 id="1、TypeSCript-简介"><a href="#1、TypeSCript-简介" class="headerlink" title="1、TypeSCript 简介"></a>1、<code>TypeSCript</code> 简介</h3><p><code>TypeScript</code> 是 <code>javaSCript</code> 的超集，它对 <code>JS</code> 进行了扩展，往 <code>JS</code> 中引入了类型的概念，并添加了许多新的特性，对比 <code>JS</code> 而言，<code>TS</code>拥有静态类型，更加严格的语法、更强大的功能</p>
+<span id="more"></span>
+
 <h3 id="2、基本类型"><a href="#2、基本类型" class="headerlink" title="2、基本类型"></a>2、基本类型</h3><ol>
 <li><p>类型声明</p>
 <ul>
@@ -311,6 +319,37 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> e: unknown</span><br><span class="line">	e = <span class="string">&#x27;zs&#x27;</span></span><br><span class="line"><span class="keyword">let</span> s: string</span><br><span class="line">	s = &lt;string&gt; e</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
+</ol>
+<h3 id="3、创建类"><a href="#3、创建类" class="headerlink" title="3、创建类"></a>3、创建类</h3><blockquote>
+<p>类可以理解为对象的模型，程序中可以根据类创建指定类型的对象</p>
+</blockquote>
+<ol>
+<li>静态属性：<ul>
+<li>通过 <code>static</code> 可以声明一个静态属性，或者又称为类属性</li>
+<li>该属性通过类直接进行调用</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>&#123;</span><br><span class="line">   	<span class="comment">// 定义类所拥有的属性</span></span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">    <span class="keyword">static</span> page: <span class="built_in">number</span> = <span class="number">200</span></span><br><span class="line">    <span class="comment">// 定义构造器</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name:<span class="built_in">string</span>,age:<span class="built_in">number</span></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">        <span class="built_in">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//定义类所拥有的方法</span></span><br><span class="line">    <span class="function"><span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;hello word&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="comment">// 可以通过实例化Person类来创建不同的对象</span></span><br><span class="line"><span class="keyword">const</span> per1 = <span class="keyword">new</span> Book(<span class="string">&#x27;红宝书&#x27;</span>,<span class="number">4</span>)</span><br><span class="line"><span class="keyword">const</span> per2 = <span class="keyword">new</span> Book(<span class="string">&#x27;犀牛书&#x27;</span>,<span class="number">7</span>)</span><br><span class="line"><span class="comment">// 静态方法通过 Book类名直接调用访问</span></span><br><span class="line"><span class="built_in">console</span>.log(Book.page) <span class="comment">// 200</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4、类的继承"><a href="#4、类的继承" class="headerlink" title="4、类的继承"></a>4、类的继承</h3><blockquote>
+<p>子类可以通过继承来使用符类中的属性</p>
+</blockquote>
+<ol>
+<li><p>通过 <code>extends</code> 关键字可以继承符类的属性</p>
+</li>
+<li><p>如果子类的方法名称和父类的方法名称一样，叫做重写，优先使用自己的方法</p>
+</li>
+<li><p>如果在子类中使用了 constructor 构造函数，必须使用super() 关键字对父类中的方法进行调用</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 定义父类属性</span></span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name:<span class="built_in">string</span>,age:<span class="built_in">number</span></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">        <span class="built_in">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 定义父类方法</span></span><br><span class="line">    <span class="function"><span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;汪汪汪!&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="comment">// 子类自己的属性</span></span><br><span class="line">    <span class="attr">size</span>: <span class="built_in">number</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">size:<span class="built_in">number</span></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// super 关键字用于继承父类中的属性</span></span><br><span class="line">        <span class="comment">// 如不使用super关键字，在子类中声明 constructor 会报错</span></span><br><span class="line">        <span class="built_in">super</span>(name,age)</span><br><span class="line">        <span class="built_in">this</span>.size = size</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="function"><span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;buibuibui~&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> dog1 = <span class="keyword">new</span> Dog(<span class="string">&#x27;小白&#x27;</span>,<span class="number">2</span>,<span class="number">30</span>)</span><br><span class="line"><span class="keyword">const</span> dog2 = <span class="keyword">new</span> Dog(<span class="string">&#x27;小黑&#x27;</span>,<span class="number">3</span>,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">console</span>.log(dog1.size) <span class="comment">// 30</span></span><br><span class="line"><span class="built_in">console</span>.log(dog1.name) <span class="comment">// 小白</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="5、封装类"><a href="#5、封装类" class="headerlink" title="5、封装类"></a>5、封装类</h3><blockquote>
+<p>对象实质上就是属性和方法的容器，它的主要作用就是存储属性和方法，这就是所谓的封装</p>
+</blockquote>
+<ol>
+<li>只读属性：<code>readonly</code> ：如果在声明属性时添加一个<code>readonly</code>，则属性便成了只读属性无法修改</li>
+<li>公共属性：<code>public</code> 修饰符：属性可以在父类、子类和对象中修改</li>
+<li>私有属性：<code>private </code> 修饰符：只可在类中修改使用</li>
 </ol>
 
     </div>
@@ -392,7 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81TypeSCript-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1、TypeSCript 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">2、基本类型</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81TypeSCript-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1、TypeSCript 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">2、基本类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">3、创建类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="nav-number">4.</span> <span class="nav-text">4、类的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%B0%81%E8%A3%85%E7%B1%BB"><span class="nav-number">5.</span> <span class="nav-text">5、封装类</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
