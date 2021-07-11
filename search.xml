@@ -123,58 +123,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue中重置data</title>
-    <url>/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/</url>
-    <content><![CDATA[<h5 id="Vue-中重置-data"><a href="#Vue-中重置-data" class="headerlink" title="Vue 中重置 data"></a><code>Vue</code> 中重置 <code>data</code></h5><span id="more"></span>
-
-<p>​        在 <code>Vue</code> 项目中，有时我们需要将组件 <code>data</code> 中的数据重置为初始状态，比如，我们需要填入表单数据，或者一个富文本编辑器，当我们编辑，提交后，需要将数据重置为初始状态</p>
-<ol>
-<li><p>手动给数据对象赋值为空</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">A</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="attr">content</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最直接的办法,适用于少量数据</span></span><br><span class="line"><span class="built_in">this</span>.A.title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">this</span>.A.content = <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>上面的方法只是适用于重置少量的数据，但当我们需要重置的数据很多的时候，比如重置整个 <code>data</code> 中的所有数据，这种方法就有些力不从心了。</p>
-<ol start="2">
-<li>使用 <code>Object.assign()</code> 方法</li>
-</ol>
-<p>在使用之前让我们先来看看 <code>MDN</code> 上对该属性的解释</p>
-<blockquote>
-<p>​    <code>Object.assign(target,...sources)</code> 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
-<p>第一个参数是目标对象，第二个参数是源对象，就是将源对象属性复制到目标对象，返回目标对象</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> objClone = <span class="built_in">Object</span>.assign(&#123;&#125;, obj)</span><br><span class="line"><span class="built_in">console</span>.log(objClone, <span class="string">&#x27;objClone&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/objClone.png" class title="objClone">
-
-<p>在得知 <code>Object.assign()</code> 方法如何使用之后，那么我们在来看看如何在 <code>Vue</code> 中获取组件的 <code>data</code> 数据</p>
-<ol>
-<li><code>this.$data</code> 属性，可以拿到组件<strong>当前</strong>的 <code>data</code> 数据</li>
-<li><code>this.$options.data</code> 属性可以拿到当前组件<strong>初始化</strong>时的 <code>data</code> 数据 </li>
-</ol>
-<p>现在我们有一组 <code>data</code> 数据</p>
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/carbon.png" class title="carbon">
-
-<p>通过 <code>this.$data</code> 拿到的数据</p>
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/1.png" class title="this.$data拿到的数据">
-
-<p>通过 <code>this.$options.data</code> 拿到的数据</p>
-<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/2.png" class title="this.$options.data()拿到的数据">
-
-<p>如此一来，我们也能拿到 <code>vue</code> 组件中的 <code>data</code> 数据了，接下来调用 <code>Object.assign()</code> 就可以重置数据了</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用Object.assign()方法重置data数据</span></span><br><span class="line"><span class="built_in">Object</span>.assign(<span class="built_in">this</span>.$data,<span class="built_in">this</span>.$options.data())</span><br><span class="line"><span class="comment">// 第一个参数为组件当前的data数据，第二个数据为组件初始化时的数据</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue基础篇</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TypeScript学习笔记</title>
     <url>/2021/06/27/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="1、TypeSCript-简介"><a href="#1、TypeSCript-简介" class="headerlink" title="1、TypeSCript 简介"></a>1、<code>TypeSCript</code> 简介</h3><p><code>TypeScript</code> 是 <code>javaSCript</code> 的超集，它对 <code>JS</code> 进行了扩展，往 <code>JS</code> 中引入了类型的概念，并添加了许多新的特性，对比 <code>JS</code> 而言，<code>TS</code>拥有静态类型，更加严格的语法、更强大的功能</p>
@@ -301,6 +249,72 @@
       </categories>
       <tags>
         <tag>TypeScript数据类型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>报错</title>
+    <url>/2021/07/11/Vuex%E6%8A%A5%E9%94%99unknown%20action%20typ%EF%BC%9Axxxx/</url>
+    <content><![CDATA[<h3 id="在使用VueX时报错-unknown-action-typ：xxxx"><a href="#在使用VueX时报错-unknown-action-typ：xxxx" class="headerlink" title="在使用VueX时报错 unknown action typ：xxxx"></a>在使用VueX时报错 <code>unknown action typ：xxxx</code></h3><span id="more"></span>
+
+<p>首先来看一下错误信息</p>
+<p><img src="/2021/07/11/Vuex%E6%8A%A5%E9%94%99unknown%20action%20typ%EF%BC%9Axxxx/png1.png" class title="报错% }&lt;&#x2F;p&gt; &lt;p&gt;原因: 导出 &lt;code&gt;store&lt;&#x2F;code&gt; 写错了变量变量名称的问题，&lt;code&gt;action&lt;&#x2F;code&gt; 应该是 &lt;code&gt;actions&lt;&#x2F;code&gt; ，&lt;code&gt;mutation&lt;&#x2F;code&gt; 应该是 &lt;code&gt;mutations&lt;&#x2F;code&gt; &lt;&#x2F;p&gt; <figure class=" highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">namespaced</span>: <span class="literal">true</span>,</span><br><span class="line">  state,</span><br><span class="line">  mutation,  <span class="comment">// 注意 这里应该是 mutations</span></span><br><span class="line">  action  <span class="comment">// 注意 这里应该是 actions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table>"></p>]]></content>
+      <categories>
+        <category>工作中的那点事...</category>
+      </categories>
+      <tags>
+        <tag>工作中的小bug...</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue中重置data</title>
+    <url>/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/</url>
+    <content><![CDATA[<h5 id="Vue-中重置-data"><a href="#Vue-中重置-data" class="headerlink" title="Vue 中重置 data"></a><code>Vue</code> 中重置 <code>data</code></h5><span id="more"></span>
+
+<p>​        在 <code>Vue</code> 项目中，有时我们需要将组件 <code>data</code> 中的数据重置为初始状态，比如，我们需要填入表单数据，或者一个富文本编辑器，当我们编辑，提交后，需要将数据重置为初始状态</p>
+<ol>
+<li><p>手动给数据对象赋值为空</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">A</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="attr">content</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 最直接的办法,适用于少量数据</span></span><br><span class="line"><span class="built_in">this</span>.A.title = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">this</span>.A.content = <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>上面的方法只是适用于重置少量的数据，但当我们需要重置的数据很多的时候，比如重置整个 <code>data</code> 中的所有数据，这种方法就有些力不从心了。</p>
+<ol start="2">
+<li>使用 <code>Object.assign()</code> 方法</li>
+</ol>
+<p>在使用之前让我们先来看看 <code>MDN</code> 上对该属性的解释</p>
+<blockquote>
+<p>​    <code>Object.assign(target,...sources)</code> 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。</p>
+<p>第一个参数是目标对象，第二个参数是源对象，就是将源对象属性复制到目标对象，返回目标对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> objClone = <span class="built_in">Object</span>.assign(&#123;&#125;, obj)</span><br><span class="line"><span class="built_in">console</span>.log(objClone, <span class="string">&#x27;objClone&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/objClone.png" class title="objClone">
+
+<p>在得知 <code>Object.assign()</code> 方法如何使用之后，那么我们在来看看如何在 <code>Vue</code> 中获取组件的 <code>data</code> 数据</p>
+<ol>
+<li><code>this.$data</code> 属性，可以拿到组件<strong>当前</strong>的 <code>data</code> 数据</li>
+<li><code>this.$options.data</code> 属性可以拿到当前组件<strong>初始化</strong>时的 <code>data</code> 数据 </li>
+</ol>
+<p>现在我们有一组 <code>data</code> 数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/carbon.png" class title="carbon">
+
+<p>通过 <code>this.$data</code> 拿到的数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/1.png" class title="this.$data拿到的数据">
+
+<p>通过 <code>this.$options.data</code> 拿到的数据</p>
+<img src="/2021/06/18/Vue%E4%B8%AD%E9%87%8D%E7%BD%AEdata/2.png" class title="this.$options.data()拿到的数据">
+
+<p>如此一来，我们也能拿到 <code>vue</code> 组件中的 <code>data</code> 数据了，接下来调用 <code>Object.assign()</code> 就可以重置数据了</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用Object.assign()方法重置data数据</span></span><br><span class="line"><span class="built_in">Object</span>.assign(<span class="built_in">this</span>.$data,<span class="built_in">this</span>.$options.data())</span><br><span class="line"><span class="comment">// 第一个参数为组件当前的data数据，第二个数据为组件初始化时的数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue基础篇</tag>
       </tags>
   </entry>
   <entry>
