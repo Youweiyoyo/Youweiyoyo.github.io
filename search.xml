@@ -318,41 +318,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
-    <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
-    <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
-
-<h6 id="一、清除样式"><a href="#一、清除样式" class="headerlink" title="一、清除样式"></a>一、清除样式</h6><p>在使用 <code>el-input</code> 时，想让文本框只能输入数字，可以设置 <code>type=&quot;number&quot;</code>，现在就只能输入纯数字文本了，但是，这样的文本框会有一个自带的上下箭头样式，比较难看。可以利用 css 将其去除。我所遇到的问题，将代码写在目标所再页面内的样式标签中并不能生效，于是乎，我将代码写在了 <code>App.vue</code> 的样式标签内（global css）。</p>
-<ul>
-<li>可以尝试<ol>
-<li>如果写在 目标所在的 <code>.vue</code> 文件中没有生效，可以尝试添加 <code>/deep/</code> 看看</li>
-<li>建议单独写一个全局的样式表文件，在 <code>main.js</code> 中引入</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 清除el-input type=&quot;number&quot;自带的上下箭头样式 */</span></span><br><span class="line"><span class="comment">/* 使用时只需要给需要type=&quot;number&quot;的文本框添加class=&quot;no-number&quot;即可 */</span></span><br><span class="line"><span class="selector-class">.no-number</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number input[type=<span class="string">&quot;number&quot;</span>]::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="二、限制文本长度"><a href="#二、限制文本长度" class="headerlink" title="二、限制文本长度"></a>二、限制文本长度</h6><p>1.接着说一下，当我们使用 <code>el-input</code> 时，默认是 <code>type=&quot;text&quot;</code> 的，这时候我们可以设置官方提供的 <code>maxLength</code> 或 <code>minLemgth</code> 来限制输入的文本长度，但是当 <code>type=&quot;number&quot;</code> 时，会发现 <code>max</code> 与 <code>min</code> 失效了，这是因为当我们 <code>type=number</code> 时你时输入不了文本的，这时，可以用一个自定义的事件 <code>oninput</code> 在事件里面获取输入的数字长度，来进行判断，如果大于规定的长度就利用 <code>slice()</code> 进行剪切操作，这样一来便可达到我们需要的效果。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">/* oninput自定义事件判断输入长度，截取需要的长度 */</span><br><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">oninput</span>=<span class="string">&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>2.如果你仔细观察，你会发现在 <code>type=&quot;number&quot;</code> 的文本框内，可以输入字母 e，这是为什么呢? 因为e在数学上代表的是无理数，是一个无限不循环的小数，所以在输入e的时候，输入框会把e当成一个数字看待，那怎么解决这个问题呢，直接看代码</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">onKeypress</span>=<span class="string">&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样一来便可解决可以输入 e 这个bug</p>
-<h6 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h6><ol>
-<li>添加全局样式，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 右侧箭头样式问题 </li>
-<li><code>oninput=&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</code> 自定义事件，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 的输入长度限制</li>
-<li><code>onKeypress=&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</code> 正则判断，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code>是可以输入e的bug</li>
-</ol>
-]]></content>
-      <categories>
-        <category>工作中那点事...</category>
-      </categories>
-      <tags>
-        <tag>工作中的小bug...</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数</title>
     <url>/2021/06/03/%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><span id="more"></span>
@@ -425,6 +390,41 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用el-input,type=&quot;number&quot;时去除箭头样式及控制输入文本长度</title>
+    <url>/2021/06/07/%E4%BD%BF%E7%94%A8el-input%E6%97%B6type-number-%E5%8E%BB%E9%99%A4%E6%A0%B7%E5%BC%8F%E5%8F%8A%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6/</url>
+    <content><![CDATA[<h5 id="使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度"><a href="#使用-el-input-时，设置-type-number-时清除右侧样式及限制输入长度" class="headerlink" title="使用 el-input 时，设置 type=number 时清除右侧样式及限制输入长度"></a>使用 <code>el-input</code> 时，设置 <code>type=number</code> 时清除右侧样式及限制输入长度</h5><span id="more"></span>
+
+<h6 id="一、清除样式"><a href="#一、清除样式" class="headerlink" title="一、清除样式"></a>一、清除样式</h6><p>在使用 <code>el-input</code> 时，想让文本框只能输入数字，可以设置 <code>type=&quot;number&quot;</code>，现在就只能输入纯数字文本了，但是，这样的文本框会有一个自带的上下箭头样式，比较难看。可以利用 css 将其去除。我所遇到的问题，将代码写在目标所再页面内的样式标签中并不能生效，于是乎，我将代码写在了 <code>App.vue</code> 的样式标签内（global css）。</p>
+<ul>
+<li>可以尝试<ol>
+<li>如果写在 目标所在的 <code>.vue</code> 文件中没有生效，可以尝试添加 <code>/deep/</code> 看看</li>
+<li>建议单独写一个全局的样式表文件，在 <code>main.js</code> 中引入</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 清除el-input type=&quot;number&quot;自带的上下箭头样式 */</span></span><br><span class="line"><span class="comment">/* 使用时只需要给需要type=&quot;number&quot;的文本框添加class=&quot;no-number&quot;即可 */</span></span><br><span class="line"><span class="selector-class">.no-number</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span>::-webkit-outer-spin-button,</span><br><span class="line">.no-number input[type=<span class="string">&quot;number&quot;</span>]::-webkit-inner-spin-button &#123;</span><br><span class="line">  margin: <span class="number">0</span>;</span><br><span class="line">  -webkit-appearance: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.no-number</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span> &#123;</span><br><span class="line">  -moz-appearance: textfield;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="二、限制文本长度"><a href="#二、限制文本长度" class="headerlink" title="二、限制文本长度"></a>二、限制文本长度</h6><p>1.接着说一下，当我们使用 <code>el-input</code> 时，默认是 <code>type=&quot;text&quot;</code> 的，这时候我们可以设置官方提供的 <code>maxLength</code> 或 <code>minLemgth</code> 来限制输入的文本长度，但是当 <code>type=&quot;number&quot;</code> 时，会发现 <code>max</code> 与 <code>min</code> 失效了，这是因为当我们 <code>type=number</code> 时你时输入不了文本的，这时，可以用一个自定义的事件 <code>oninput</code> 在事件里面获取输入的数字长度，来进行判断，如果大于规定的长度就利用 <code>slice()</code> 进行剪切操作，这样一来便可达到我们需要的效果。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">/* oninput自定义事件判断输入长度，截取需要的长度 */</span><br><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">oninput</span>=<span class="string">&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.如果你仔细观察，你会发现在 <code>type=&quot;number&quot;</code> 的文本框内，可以输入字母 e，这是为什么呢? 因为e在数学上代表的是无理数，是一个无限不循环的小数，所以在输入e的时候，输入框会把e当成一个数字看待，那怎么解决这个问题呢，直接看代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">onKeypress</span>=<span class="string">&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样一来便可解决可以输入 e 这个bug</p>
+<h6 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h6><ol>
+<li>添加全局样式，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 右侧箭头样式问题 </li>
+<li><code>oninput=&quot;if(value.length&gt;6)value=value.slice(0,6)&quot;</code> 自定义事件，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code> 的输入长度限制</li>
+<li><code>onKeypress=&quot;return(/[\d.]/.test(String.fromCharCode(event.keyCode)))&quot;</code> 正则判断，解决 <code>&lt;el-input type=&quot;number&quot;/&gt;</code>是可以输入e的bug</li>
+</ol>
+]]></content>
+      <categories>
+        <category>工作中那点事...</category>
+      </categories>
+      <tags>
+        <tag>工作中的小bug...</tag>
       </tags>
   </entry>
   <entry>
